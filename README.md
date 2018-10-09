@@ -1,2 +1,2 @@
-# RestMan-
+# RestMan
 CS434 project
