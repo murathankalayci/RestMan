@@ -1,6 +1,4 @@
-import controller.RestarauntController;
 import model.Manager;
-import model.Material;
 import view.MainFrame;
 
 public class Main {
@@ -20,5 +18,6 @@ public class Main {
 
 
         MainFrame view = new MainFrame(manager);
+        view.init();
     }
 }
