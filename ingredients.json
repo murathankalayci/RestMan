@@ -1,0 +1,24 @@
+{
+  "ingredients": [
+    {
+      "quantity": 82,
+      "name": "Potato"
+    },
+    {
+      "quantity": 47,
+      "name": "Carrot"
+    },
+    {
+      "quantity": 164,
+      "name": "Onion"
+    },
+    {
+      "quantity": 98,
+      "name": "Tomato"
+    },
+    {
+      "quantity": 100,
+      "name": "Meat"
+    }
+  ]
+}

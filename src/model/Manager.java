@@ -1,13 +1,19 @@
 package model;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Manager implements Handler {
 
     private HashMap<String, Integer> materials; //Currently initiates empty every time we run the code. TODO: implement JSON data system so that every time we run the code, it initiates a map from previous material data.
 
     public Manager() {
-        materials = new HashMap<>(); // TODO: Initiate the map from an existed data.
+        materials = JSONParser.parseStock("ingredients.json"); // TODO: Initiate the map from an existed data.
     }
 
     public void addMaterial(String material, int quantity) {
@@ -43,6 +49,26 @@ public class Manager implements Handler {
 
     public HashMap<String, Integer> getMaterials() {
         return materials;
+    }
+
+    public void refreshDatabase() {
+        try {
+            FileWriter file = new FileWriter("ingredients.json");
+            JSONObject obj = new JSONObject();
+            JSONArray ingredients = new JSONArray();
+            for (Map.Entry entry : materials.entrySet()) {
+                JSONObject tmp = new JSONObject();
+                tmp.put("name", entry.getKey());
+                tmp.put("quantity", entry.getValue());
+                ingredients.add(tmp);
+            }
+            obj.put("ingredients", ingredients);
+            file.write(obj.toJSONString());
+            file.flush();
+            file.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 

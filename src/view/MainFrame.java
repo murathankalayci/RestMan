@@ -5,6 +5,8 @@ import model.Kitchen;
 import model.Manager;
 
 import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class MainFrame extends JFrame {
     private Manager manager;
@@ -31,5 +33,12 @@ public class MainFrame extends JFrame {
         this.add(tabbedPane);
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                manager.refreshDatabase();
+                kitchen.refreshDatabase();
+                System.exit(0);
+            }
+        });
     }
 }

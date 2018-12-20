@@ -1,0 +1,43 @@
+{
+  "menu": [
+    {
+      "ingredients": [
+        {
+          "quantity": 1,
+          "name": "Tomato"
+        },
+        {
+          "quantity": 1,
+          "name": "Meat"
+        }
+      ],
+      "mealname": "Hamburger"
+    },
+    {
+      "ingredients": [
+        {
+          "quantity": 1,
+          "name": "Onion"
+        },
+        {
+          "quantity": 1,
+          "name": "Tomato"
+        },
+        {
+          "quantity": 1,
+          "name": "Meat"
+        }
+      ],
+      "mealname": "CheeseBurger"
+    },
+    {
+      "ingredients": [
+        {
+          "quantity": 5,
+          "name": "Onion"
+        }
+      ],
+      "mealname": "Onion Soup"
+    }
+  ]
+}
