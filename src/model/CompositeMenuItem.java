@@ -22,8 +22,8 @@ public class CompositeMenuItem extends MenuItem {
     }
 
     public boolean isAvailable() {
-        for(MenuItem element : items){
-            if(!element.isAvailable)
+        for(MenuItem item : items){
+            if(!item.isAvailable)
                 return false;
         }
         return true;
