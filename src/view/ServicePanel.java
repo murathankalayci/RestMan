@@ -35,9 +35,6 @@ public class ServicePanel {
         listPanel = new JPanel(new GridLayout(1, 1));
         JLabel title = new JLabel("MENU ----------->");
         menu = new JList<>(new DefaultListModel<String>());
-        ((DefaultListModel) menu.getModel()).addElement("HAMBURGER");
-        ((DefaultListModel) menu.getModel()).addElement("LAZANYA");
-        ((DefaultListModel) menu.getModel()).addElement("CHEESEBURGER");
         populateMenu();
         JButton addOrder = new JButton("Order");
         addOrder.addActionListener(new AddOrderButtonListener(controller));
