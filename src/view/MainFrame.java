@@ -1,6 +1,7 @@
 package view;
 
 
+import model.Kitchen;
 import model.Manager;
 
 import javax.swing.*;
@@ -8,15 +9,17 @@ import java.awt.*;
 
 public class MainFrame extends JFrame {
     private Manager manager;
+    private Kitchen kitchen;
 
-    public MainFrame(Manager manager) {
+    public MainFrame(Manager manager, Kitchen kitchen) {
         this.manager = manager;
+        this.kitchen = kitchen;
     }
 
     public void init() {
         JTabbedPane tabbedPane = new JTabbedPane();
         ManagerPanel managerPanel = new ManagerPanel(manager);
-        KitchenPanel kitchenPanel = new KitchenPanel();
+        KitchenPanel kitchenPanel = new KitchenPanel(kitchen);
         ServicePanel servicePanel = new ServicePanel();
 
         tabbedPane.addTab("Manager", null, managerPanel.init(), null);
