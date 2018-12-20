@@ -2,9 +2,9 @@ package view;
 
 import controller.KitchenPanelController;
 import model.Kitchen;
+import model.Manager;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,17 +12,25 @@ import java.awt.event.ActionListener;
 public class KitchenPanel {
     public static JPanel preparationPanel;
     public static JList<String> ingredientList;
+    public static JList<String> orderList;
     public static JPanel kitchenPanel;
     public static JPanel mealPanel;
+    public static JPanel listPanel;
+    public static JPanel menuPanel;
+    private JTextField mealName;
     private JTextField nameInput;
     private JTextField quantityInput;
-    private static KitchenPanelController controller;
+    private KitchenPanelController controller;
     private Kitchen kitchen;
+    private ServicePanel servicePanel;
+    private ManagerPanel managerPanel;
 
     public KitchenPanel(Kitchen kitchen) {
         this.kitchen = kitchen;
         preparationPanel = new JPanel(new BorderLayout());
         ingredientList = new JList<>(new DefaultListModel<String>());
+        orderList = new JList<>(new DefaultListModel<String>());
+        controller = new KitchenPanelController(this, this.kitchen);
     }
 
     public JPanel init() {
@@ -32,8 +40,29 @@ public class KitchenPanel {
     public JPanel createKitchenPanel() {
         kitchenPanel = new JPanel(new BorderLayout());
         createMealPanel();
+        createListPanel();
+        //createMenuPanel();
         kitchenPanel.setVisible(true);
         return kitchenPanel;
+    }
+
+    public void createMenuPanel() {
+        menuPanel = new JPanel(new GridLayout(1, 1));
+        JLabel title = new JLabel("Menu ----------->");
+        JList<String> list = new JList<>(new DefaultListModel<String>());
+
+        menuPanel.add(title);
+        menuPanel.add(list);
+        kitchenPanel.add(menuPanel, BorderLayout.CENTER);
+    }
+
+    public void createListPanel() {
+        listPanel = new JPanel(new GridLayout(1, 1));
+        JLabel title = new JLabel("Orders ----------->");
+
+        listPanel.add(title);
+        listPanel.add(orderList);
+        kitchenPanel.add(listPanel, BorderLayout.EAST);
     }
 
     public void createMealPanel() {
@@ -62,7 +91,6 @@ public class KitchenPanel {
     }
 
     private JPanel createDownPreparePanel() {
-        KitchenPanelController controller = new KitchenPanelController(this, kitchen);
         JPanel preparePanel = new JPanel(new FlowLayout());
         nameInput = new JTextField();
         quantityInput = new JTextField();
@@ -79,12 +107,14 @@ public class KitchenPanel {
 
     private JPanel createPreparationWithButtonPanel() {
         JPanel preparationWithButtonPanel = new JPanel();
-        JTextField nameField = new JTextField();
-        nameField.setPreferredSize(new Dimension(100, 25));
+        mealName = new JTextField();
+        mealName.setPreferredSize(new Dimension(100, 25));
         preparationWithButtonPanel.add(createPreparationPanel());
         preparationWithButtonPanel.add(new JLabel("Set Name="));
-        preparationWithButtonPanel.add(nameField);
-        preparationWithButtonPanel.add(new JButton("Add this meal to menu"));
+        preparationWithButtonPanel.add(mealName);
+        JButton addToMenu = new JButton("Add this meal to menu");
+        addToMenu.addActionListener(new AddToMenuButtonListener(controller));
+        preparationWithButtonPanel.add(addToMenu);
         return preparationWithButtonPanel;
     }
 
@@ -109,5 +139,41 @@ public class KitchenPanel {
         }
     }
 
+    class AddToMenuButtonListener implements ActionListener {
+        private final KitchenPanelController controller;
 
+        AddToMenuButtonListener(KitchenPanelController controller) {
+            this.controller = controller;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // TODO: Check the integer status of the quantity input.
+            controller.addToMenuClicked(mealName.getText());
+        }
+    }
+
+    public ServicePanel getServicePanel() {
+        return servicePanel;
+    }
+
+    public void setServicePanel(ServicePanel panel) {
+        this.servicePanel = panel;
+    }
+
+    public Kitchen getKitchen() {
+        return kitchen;
+    }
+
+    public Manager getManager() {
+        return managerPanel.getManager();
+    }
+
+    public void setManagerPanel(ManagerPanel managerPanel) {
+        this.managerPanel = managerPanel;
+    }
+
+    public ManagerPanel getManagerPanel() {
+        return managerPanel;
+    }
 }

@@ -5,7 +5,6 @@ import model.Kitchen;
 import model.Manager;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class MainFrame extends JFrame {
     private Manager manager;
@@ -20,7 +19,9 @@ public class MainFrame extends JFrame {
         JTabbedPane tabbedPane = new JTabbedPane();
         ManagerPanel managerPanel = new ManagerPanel(manager);
         KitchenPanel kitchenPanel = new KitchenPanel(kitchen);
-        ServicePanel servicePanel = new ServicePanel();
+        ServicePanel servicePanel = new ServicePanel(kitchenPanel);
+        kitchenPanel.setServicePanel(servicePanel);// TODO : TRANSFORM THIS TO OBSERVER.
+        kitchenPanel.setManagerPanel(managerPanel);
 
         tabbedPane.addTab("Manager", null, managerPanel.init(), null);
         tabbedPane.addTab("Kitchen", null, kitchenPanel.init(), null);

@@ -1,8 +1,6 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class Manager implements Handler {
 
@@ -13,27 +11,27 @@ public class Manager implements Handler {
     }
 
     public void addMaterial(String material, int quantity) {
-        if (materialExists(material)) {
+        if (isMaterialExists(material)) {
             materials.put(material, materials.get(material) + quantity); // Material exists; so we increase its quantity.
         } else {
             materials.put(material, quantity); // Material does not exist. Put a new one.
         }
     }
 
-    private boolean materialExists(String material) { // Checks the material from the list. If exists returns true.
+    public boolean isMaterialExists(String material) { // Checks the material from the list. If exists returns true.
         if (materials.containsKey(material)) return true;
         else return false;
     }
 
     public void removeMaterial(String material, int quantity) {
-        if (checkAvailability(material, quantity)) {
+        if (isAvailable(material, quantity)) {
             materials.put(material, materials.get(material) - quantity); // this put function actually re-inputs the material with the removed quantity.
         } else {
             materials.remove(material); // the material quantity is 0. so we remove the entire material from the map.
         }
     }
 
-    private boolean checkAvailability(String material, int quantity) {
+    private boolean isAvailable(String material, int quantity) {
         if ((materials.get(material) - quantity) == 0) {
             return false; // Material quantity is 0.
         } else if ((materials.get(material) - quantity) <= 0) {

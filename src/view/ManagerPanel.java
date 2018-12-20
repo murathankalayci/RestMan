@@ -28,14 +28,14 @@ public class ManagerPanel {
     private JPanel createManagerPanel() {
         managerPanel = new JPanel(new BorderLayout());
 
-        managerPanel.add(createManagementPanel(), BorderLayout.WEST);
+        createManagementPanel();
         createListPanel();
 
         managerPanel.setVisible(true);
         return managerPanel;
     }
 
-    private JPanel createManagementPanel() {
+    public void createManagementPanel() {
         ManagerPanelController controller = new ManagerPanelController(this, manager);
         JPanel management = new JPanel(new FlowLayout());
 
@@ -56,7 +56,7 @@ public class ManagerPanel {
         management.add(quantityInput);
         management.add(addIngredients);
 
-        return management;
+        managerPanel.add(management, BorderLayout.WEST);
     }
 
     public void createListPanel() {
@@ -99,5 +99,9 @@ public class ManagerPanel {
 
     public static JPanel getListPanel() {
         return listPanel;
+    }
+
+    public Manager getManager() {
+        return manager;
     }
 }
