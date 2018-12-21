@@ -3,14 +3,13 @@ package controller;
 import model.AddMealCommand;
 import model.Command;
 import model.Kitchen;
-import model.Observer;
 import view.KitchenPanel;
 import view.ServicePanel;
 
 import javax.swing.*;
 import java.util.HashMap;
 
-public class KitchenPanelController implements Observer {
+public class KitchenPanelController {
     private Kitchen kitchen;
     private KitchenPanel kitchenPanel;
     private Command addMealCommand;

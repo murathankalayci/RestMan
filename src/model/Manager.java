@@ -17,14 +17,14 @@ public class Manager {
     }
 
     public void addMaterial(String material, int quantity) {
-        if (isMaterialExists(material)) {
+        if (materialExists(material)) {
             materials.put(material, materials.get(material) + quantity); // Material exists; so we increase its quantity.
         } else {
             materials.put(material, quantity); // Material does not exist. Put a new one.
         }
     }
 
-    public boolean isMaterialExists(String material) { // Checks the material from the list. If exists returns true.
+    public boolean materialExists(String material) { // Checks the material from the list. If exists returns true.
         if (materials.containsKey(material)) return true;
         else return false;
     }

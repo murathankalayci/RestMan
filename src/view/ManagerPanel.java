@@ -40,8 +40,10 @@ public class ManagerPanel {
         JPanel management = new JPanel(new FlowLayout());
 
         nameInput = new JTextField();
+        //unitInput = new JTextField();
         quantityInput = new JTextField();
         nameInput.setPreferredSize(new Dimension(100, 25));
+        //unitInput.setPreferredSize(new Dimension(30, 25));
         quantityInput.setPreferredSize(new Dimension(25, 25));
 
         JButton addIngredients = new JButton("Add Ingredients");

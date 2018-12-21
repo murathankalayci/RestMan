@@ -2,6 +2,7 @@ package controller;
 
 import model.CheckAndRemoveCommand;
 import model.Command;
+import model.UserInformationCommand;
 import view.KitchenPanel;
 import view.ServicePanel;
 
@@ -31,7 +32,8 @@ public class ServicePanelController {
             kitchenPanel.getManagerPanel().createManagementPanel();
             kitchenPanel.getManagerPanel().getManagerPanel().revalidate();
         } else {
-            JOptionPane.showMessageDialog(new JFrame(), "Insufficient materials.");
+            UserInformationCommand cmd = new UserInformationCommand(kitchenPanel.getManager(), kitchenPanel.getKitchen(), selectedItem);
+            cmd.execute();
         }
     }
 }

@@ -23,7 +23,7 @@ public class CheckAndRemoveCommand implements Command {
         HashMap<String, Integer> ingredients = kitchen.getMenu().get(selectedMeal);
         System.out.println(manager.getMaterials());
         for (Map.Entry entry : ingredients.entrySet()) {
-            if (manager.isMaterialExists((String) entry.getKey())) {
+            if (manager.materialExists((String) entry.getKey())) {
                 manager.removeMaterial((String) entry.getKey(), (Integer) entry.getValue());
             }
         }
@@ -34,9 +34,9 @@ public class CheckAndRemoveCommand implements Command {
         HashMap<String, Integer> ingredients = kitchen.getMenu().get(selectedMeal);
         System.out.println(manager.getMaterials());
         for (Map.Entry entry : ingredients.entrySet()) {
-            if (!manager.isMaterialExists((String) entry.getKey())) {
+            if (!manager.materialExists((String) entry.getKey())) {
                 return false;
-            }
+            } //else if
         }
         return true;
     }
