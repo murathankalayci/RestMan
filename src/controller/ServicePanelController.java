@@ -18,16 +18,20 @@ public class ServicePanelController {
 
     public void addOrderClicked(String selectedItem) {
         checkAndRemoveCommand = new CheckAndRemoveCommand(kitchenPanel.getManager(), kitchenPanel.getKitchen(), selectedItem);
-        checkAndRemoveCommand.execute();
-        ((DefaultListModel) kitchenPanel.orderList.getModel()).addElement(selectedItem);
-        kitchenPanel.kitchenPanel.removeAll();
-        kitchenPanel.createListPanel();
-        kitchenPanel.createMealPanel();
-        kitchenPanel.kitchenPanel.revalidate();
+        if (((CheckAndRemoveCommand) checkAndRemoveCommand).check()) {
+            checkAndRemoveCommand.execute();
+            ((DefaultListModel) kitchenPanel.orderList.getModel()).addElement(selectedItem);
+            kitchenPanel.kitchenPanel.removeAll();
+            kitchenPanel.createListPanel();
+            kitchenPanel.createMealPanel();
+            kitchenPanel.kitchenPanel.revalidate();
 
-        kitchenPanel.getManagerPanel().getManagerPanel().removeAll();
-        kitchenPanel.getManagerPanel().createListPanel();
-        kitchenPanel.getManagerPanel().createManagementPanel();
-        kitchenPanel.getManagerPanel().getManagerPanel().revalidate();
+            kitchenPanel.getManagerPanel().getManagerPanel().removeAll();
+            kitchenPanel.getManagerPanel().createListPanel();
+            kitchenPanel.getManagerPanel().createManagementPanel();
+            kitchenPanel.getManagerPanel().getManagerPanel().revalidate();
+        } else {
+            JOptionPane.showMessageDialog(new JFrame(), "Insufficient materials.");
+        }
     }
 }

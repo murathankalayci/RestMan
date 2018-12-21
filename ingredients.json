@@ -9,15 +9,19 @@
       "name": "Carrot"
     },
     {
-      "quantity": 164,
+      "quantity": 158,
       "name": "Onion"
     },
     {
-      "quantity": 98,
+      "quantity": 2,
+      "name": "Fish"
+    },
+    {
+      "quantity": 97,
       "name": "Tomato"
     },
     {
-      "quantity": 100,
+      "quantity": 98,
       "name": "Meat"
     }
   ]

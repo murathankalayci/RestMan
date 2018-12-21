@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Kitchen implements Handler {
+public class Kitchen {
     private HashMap<String, HashMap<String, Integer>> menu; // MAP == (meal name, ingredients in a map)
 
     public Kitchen() {

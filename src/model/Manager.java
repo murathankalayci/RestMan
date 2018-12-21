@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Manager implements Handler {
+public class Manager {
 
     private HashMap<String, Integer> materials; //Currently initiates empty every time we run the code. TODO: implement JSON data system so that every time we run the code, it initiates a map from previous material data.
 

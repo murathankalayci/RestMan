@@ -16,6 +16,40 @@
     {
       "ingredients": [
         {
+          "quantity": 2,
+          "name": "Soya"
+        },
+        {
+          "quantity": 1,
+          "name": "Fish"
+        }
+      ],
+      "mealname": "Sushi"
+    },
+    {
+      "ingredients": [
+        {
+          "quantity": 4,
+          "name": "Pickle"
+        },
+        {
+          "quantity": 5,
+          "name": "Onion"
+        },
+        {
+          "quantity": 3,
+          "name": "Cabbage"
+        },
+        {
+          "quantity": 1,
+          "name": "Meat"
+        }
+      ],
+      "mealname": "CS434 Deluxe Hamburger"
+    },
+    {
+      "ingredients": [
+        {
           "quantity": 1,
           "name": "Onion"
         },

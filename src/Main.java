@@ -9,6 +9,5 @@ public class Main {
         Kitchen kitchen = new Kitchen();
         MainFrame view = new MainFrame(manager, kitchen);
         view.init();
-        JSONParser.parseMenu("menu.json");
     }
 }

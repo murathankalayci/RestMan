@@ -29,4 +29,15 @@ public class CheckAndRemoveCommand implements Command {
         }
         System.out.println(manager.getMaterials());
     }
+
+    public boolean check() {
+        HashMap<String, Integer> ingredients = kitchen.getMenu().get(selectedMeal);
+        System.out.println(manager.getMaterials());
+        for (Map.Entry entry : ingredients.entrySet()) {
+            if (!manager.isMaterialExists((String) entry.getKey())) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
